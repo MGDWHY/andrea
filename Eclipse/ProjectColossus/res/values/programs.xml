@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="planet_vs">        
+        uniform mat4 in_MVP;
+        
+        attribute vec3 in_Position;
+        attribute vec3 in_Normal;
+        attribute vec2 in_TexCoord;
+        
+        varying vec3 fs_Normal;
+        varying vec2 fs_TexCoord;
+        
+        
+        void main() {
+        	gl_Position = in_MVP * vec4(in_Position, 1.0);
+        	fs_TexCoord = in_TexCoord;
+        	fs_Normal = (in_MVP * vec4(normalize(in_Normal), 0.0)).xyz;
+       	}
+	</string>
+    <string name="planet_fs">        
+        const vec3 LIGHT_VECTOR = vec3(0.0, 0.0, -1.0);
+        
+        uniform bool in_UseTexture;
+        uniform sampler2D in_Texture;
+        uniform vec3 in_LightColor;
+        
+        varying vec3 fs_Normal;
+        varying vec2 fs_TexCoord;
+        
+        void main() {
+        	if(in_UseTexture) {
+        		float diffuseFactor = max(0.0, dot(normalize(fs_Normal), LIGHT_VECTOR));
+        		gl_FragColor = texture2D(in_Texture, fs_TexCoord) * vec4(in_LightColor, 1.0) * diffuseFactor;	
+        	} else
+        		gl_FragColor = vec4(0.0);
+        }
+	</string>
+    <string name="planet_aura_vs">	    
+        uniform mat4 in_MVP;
+	    
+	    attribute vec3 in_Position;
+	    attribute vec2 in_TexCoord;
+	    varying vec2 fs_TexCoord;
+	    
+	    void main() {
+	    	gl_Position = in_MVP * vec4(in_Position, 1.0);
+	    	fs_TexCoord = in_TexCoord;
+	    }
+	</string>
+    <string name="planet_aura_fs">	    
+        uniform vec3 in_Color;
+	    uniform sampler2D in_AuraTexture;
+	    
+	    varying vec2 fs_TexCoord;
+	    
+	    void main() {
+	    	gl_FragColor = vec4(in_Color, texture2D(in_AuraTexture, fs_TexCoord).r);
+	    }
+	</string>
+    <string name="routes_vs">	   
+        uniform mat4 in_MVP;
+	   
+	   attribute vec3 in_Position;
+	   
+	   void main() {
+	   		gl_Position = in_MVP * vec4(in_Position, 1.0);
+	   } 
+	</string>
+    <string name="routes_fs">	    
+        void main() {
+	    	gl_FragColor = vec4(0.5, 0.5, 0.5, 1.0);
+	    }
+	</string>
+    <string name="unit_vs">	    
+        uniform mat4 in_MVP;
+	    
+	    attribute vec3 in_Position;
+	    attribute vec2 in_TexCoord;
+	    
+	    varying vec2 fs_TexCoord;
+	    
+	    void main() {
+	    	gl_Position = in_MVP * vec4(in_Position, 1.0);
+	    	fs_TexCoord = in_TexCoord;
+	    }
+	</string>
+    <string name="unit_fs">	    
+        uniform sampler2D in_Texture;
+	    uniform vec3 in_Color;
+	    
+	    varying vec2 fs_TexCoord;
+	    
+	    void main() {
+	    	gl_FragColor = vec4(in_Color, 1.0) * texture2D(in_Texture, fs_TexCoord);
+	    }
+	</string>
+    <string name="star_vs">	    
+        uniform mat4 in_MVP;
+	    
+	    attribute vec3 in_Position;
+	    attribute vec3 in_Color;
+	    attribute float in_Size;
+	    
+	    invariant varying vec3 fs_Color;
+	    
+	    void main() {
+	    	gl_Position = in_MVP * vec4(in_Position, 1.0);
+	    	gl_PointSize = in_Size;
+	    	fs_Color = in_Color;
+	    }
+	</string>
+    <string name="star_fs">	    
+        uniform sampler2D in_Texture;
+	    
+	    invariant varying vec3 fs_Color;	    
+	    
+	    void main() {
+	    	gl_FragColor = vec4(fs_Color, texture2D(in_Texture, gl_PointCoord).r);
+	    }
+	</string>
+    <string name="nebula_vs">	   
+        uniform mat4 in_MVP;
+	    
+	    attribute vec3 in_Position;
+	    attribute vec3 in_Color;
+	    attribute float in_Size;
+	    
+	    invariant varying vec3 fs_Color;
+	    varying vec2 fs_TexOffset;
+	    
+	    void main() {
+	    	gl_Position = in_MVP * vec4(in_Position, 1.0);
+	    	gl_PointSize = in_Size;
+	    	fs_TexOffset = in_Position.xy;
+	    	fs_Color = in_Color;
+	    }
+	</string>
+    <string name="nebula_fs">	    
+        uniform sampler2D in_Texture;
+	    
+	    invariant varying vec3 fs_Color;
+	    varying vec2 fs_TexOffset;	    
+	    
+	    void main() {
+	    	gl_FragColor = vec4(fs_Color, texture2D(in_Texture, gl_PointCoord + fs_TexOffset).r * 0.1);
+	    }  
+	</string>    
+	<string name="effect_planet_cage_vs">
+	    uniform mat4 in_MVP;
+	    uniform float in_Time;
+	    uniform float in_Size;
+	    
+	    attribute vec4 in_Position;
+	    
+	    varying float fs_Valid;
+	    
+	    void main() {
+	    	gl_PointSize = fs_Valid = max(0.0, in_Size * (in_Position.w - 0.2)) ;	
+			gl_Position = in_MVP * vec4(in_Position.xyz, 1.0);
+
+	    }
+
+	</string>
+	<string name="effect_planet_cage_fs">
+	    uniform sampler2D in_Texture;
+	    uniform vec3 in_Color;
+	    
+	    varying float fs_Valid;
+	    
+		void main() {
+			if(fs_Valid > 0.0)
+				gl_FragColor = vec4(in_Color, texture2D(in_Texture, gl_PointCoord));
+			else
+				discard;
+		}	
+	</string>
+	<string name="effect_resource_lock_vs">
+	    uniform mat4 in_MVP;
+	    
+	    attribute vec3 in_Position;
+	    attribute vec2 in_TexCoord;
+	    
+	    varying vec2 fs_TexCoord;
+	    
+	    void main() {
+	    	gl_Position = in_MVP * vec4(in_Position, 1.0);
+	    	fs_TexCoord = in_TexCoord;
+	    }
+	</string>
+	<string name="effect_resource_lock_fs">
+	    uniform sampler2D in_TexLowGlow;
+	    uniform sampler2D in_TexHighGlow;
+	    uniform vec3 in_Color;
+		uniform float in_Alpha;
+	    
+	    varying vec2 fs_TexCoord;
+	    
+	    void main() {
+	    	float a0 = texture2D(in_TexLowGlow, fs_TexCoord).r;
+	    	float a1 = texture2D(in_TexHighGlow, fs_TexCoord).r;
+	    	gl_FragColor = vec4(in_Color, mix(a0, a1, in_Alpha));
+	    }
+	    
+	</string>
+	
+	<string name="anim_unit_move_vs">
+	    uniform mat4 in_MVP;
+	    
+	    attribute vec3 in_Position;
+	    
+	    void main() {
+	    	gl_Position = in_MVP * vec4(in_Position, 1.0);
+	    	gl_PointSize = 40.0;
+	    }
+	</string>
+	<string name="anim_unit_move_fs">
+	    uniform sampler2D in_Texture;
+	    uniform vec3 in_Color;
+	    
+	    void main() {
+	    	gl_FragColor = vec4(in_Color, texture2D(in_Texture, gl_PointCoord).r);
+	    }
+	</string>
+	<string name="anim_explosion_vs">
+	    uniform mat4 in_MVP;
+	    
+	    uniform vec4 in_Properties;
+	    
+	    attribute vec3 in_Position;
+	    attribute vec2 in_TexCoord;
+	    
+	    varying vec2 fs_TexCoord;
+	    varying float fs_Decay;
+	    
+	    void main() {
+	    	float maxScale = in_Properties.z;
+	    	
+	    	float life = min(1.0, in_Properties.x / in_Properties.y);
+	    	float lifesf = life - 1.0;	    	
+	    	
+	    	float scale = 1.0 + maxScale * (1.0 - lifesf * lifesf * lifesf * lifesf);
+	    	vec3 position = vec3(in_Position.xy * scale, 1.0);
+	    	
+	    	gl_Position = in_MVP * vec4(position, 1.0);	    	
+	    	
+	    	fs_TexCoord = in_TexCoord - 0.5;
+	    	fs_Decay = 1.0 - life;
+	    	
+
+	    }
+	</string>
+	
+	<string name="anim_explosion_fs">
+	    
+	    uniform vec3 in_Color0, in_Color1;
+	    
+	    varying vec2 fs_TexCoord;
+	    varying float fs_Decay;
+	    
+	    void main() {
+	    	
+	    	float x = fs_TexCoord.x;
+	    	float y = fs_TexCoord.y;
+	    	
+	    	float p = x * x + y * y;
+	    	
+	    	if(p &lt;= 0.25) {
+	    		vec3 color = mix(in_Color1, in_Color0, fs_Decay);
+	    		gl_FragColor = vec4(color, (p / 0.25) * fs_Decay);
+	    	} else
+	    		gl_FragColor = vec4(0.0);
+	    }
+	</string>
+</resources>

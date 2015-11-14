@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Desktop
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PongGL", "PongGL\PongGL.vcxproj", "{ED639CFF-5E0B-4CD9-B640-76957EFFCAEA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF} = {8EADFE38-7900-4509-ABFA-6B6F315955BF}
+		{5A0A18A0-E202-4DC5-9A1D-EBD3F9842916} = {5A0A18A0-E202-4DC5-9A1D-EBD3F9842916}
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA} = {8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Random", "..\Random\Random\Random.vcxproj", "{5A0A18A0-E202-4DC5-9A1D-EBD3F9842916}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLUtils", "..\OpenGLUtils\OpenGLUtils\OpenGLUtils.vcxproj", "{8EADFE38-7900-4509-ABFA-6B6F315955BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vecmath", "..\Libs\Vecmath\Vecmath.vcxproj", "{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED639CFF-5E0B-4CD9-B640-76957EFFCAEA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ED639CFF-5E0B-4CD9-B640-76957EFFCAEA}.Debug|Win32.Build.0 = Debug|Win32
+		{ED639CFF-5E0B-4CD9-B640-76957EFFCAEA}.Release|Win32.ActiveCfg = Release|Win32
+		{ED639CFF-5E0B-4CD9-B640-76957EFFCAEA}.Release|Win32.Build.0 = Release|Win32
+		{5A0A18A0-E202-4DC5-9A1D-EBD3F9842916}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5A0A18A0-E202-4DC5-9A1D-EBD3F9842916}.Debug|Win32.Build.0 = Debug|Win32
+		{5A0A18A0-E202-4DC5-9A1D-EBD3F9842916}.Release|Win32.ActiveCfg = Release|Win32
+		{5A0A18A0-E202-4DC5-9A1D-EBD3F9842916}.Release|Win32.Build.0 = Release|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Debug|Win32.Build.0 = Debug|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Release|Win32.ActiveCfg = Release|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Release|Win32.Build.0 = Release|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Debug|Win32.Build.0 = Debug|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Release|Win32.ActiveCfg = Release|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

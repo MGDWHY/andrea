@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="card_big_width">300dp</dimen>
+	<dimen name="card_big_height">450dp</dimen>
+	<dimen name="card_big_border">10dp</dimen>
+	<dimen name="card_big_logo_size">32dp</dimen>
+	<dimen name="card_big_img_width">240dp</dimen>
+	<dimen name="card_big_img_height">170dp</dimen>
+	<dimen name="card_big_title_size">16dp</dimen>
+	<dimen name="card_big_text_size">10dp</dimen>
+</resources>

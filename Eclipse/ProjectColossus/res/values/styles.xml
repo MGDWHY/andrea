@@ -1,0 +1,20 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <color name="bgcolor">#333</color>
+    <color name="fgcolor">#00C4F9</color>
+	<color name="white">#fff</color>
+	<color name="black">#000</color>
+	<color name="darkgray">#333</color>
+	<color name="lightblue">#00C4F9</color>
+	<color name="transparent">#0000</color>
+	
+	<style name="notitledialog">
+	    <item name="android:windowNoTitle">true</item>
+	   	<item name="android:windowFrame">@null</item>
+	    <item name="android:windowIsFloating">true</item>
+	    <item name="android:windowContentOverlay">@null</item>
+	    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+	    <item name="android:windowBackground">@color/transparent</item>
+	    <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+	    <item name="android:colorBackgroundCacheHint">@null</item>    
+	</style>
+</resources>

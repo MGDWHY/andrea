@@ -1,0 +1,33 @@
+#version 420
+
+uniform mat4 in_ModelViewMatrix;
+uniform vec2 in_Viewport;
+uniform float in_TessLevel;
+uniform int in_TessMode;
+uniform vec3 in_SurfaceNormal;
+uniform vec3 in_SurfaceTangent;
+
+layout(vertices = 3) out;
+
+flat in vec2 vsTexCoord[];
+flat in vec2 vsPixelPosition[];
+out vec2 tcsTexCoord[];
+
+patch out vec3 tcsSurfaceNormal;
+patch out vec3 tcsSurfaceTangent;
+
+void main() {
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;	
+	tcsTexCoord[gl_InvocationID] = vsTexCoord[gl_InvocationID];
+
+	tcsSurfaceNormal = (in_ModelViewMatrix * vec4(in_SurfaceNormal, 0.0)).xyz;
+	tcsSurfaceTangent = (in_ModelViewMatrix * vec4(in_SurfaceTangent, 0.0)).xyz;
+
+	if(in_TessMode == 0) { // Uniform
+		gl_TessLevelOuter[0] = in_TessLevel;
+		gl_TessLevelOuter[1] = in_TessLevel;
+		gl_TessLevelOuter[2] = in_TessLevel;
+		
+		gl_TessLevelInner[0] = in_TessLevel;
+	} 
+}

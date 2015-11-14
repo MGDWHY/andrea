@@ -1,0 +1,117 @@
+// bezier.tsev
+#version 420
+
+// Matrici
+uniform bool in_InterpolatedNormals;
+uniform mat4 in_ModelViewMatrix;
+
+// Output della normale per fragment shader
+flat out vec3 gsNormal;
+
+patch in vec3 tesNormal[4];
+
+// Dice al Tessellator di generare le coordinate u e v in [0, 1] 
+layout(quads, fractional_even_spacing, ccw) in;
+
+// Coefficienti per i polinomi di Bernstein di grado 3
+const float coefficients[] = {
+	1, 3, 3, 1
+};
+
+// Calcola il polinomio di Bernstein
+float Bernstein3(int i, float t) {
+	return coefficients[i] * pow(t, i) * pow(1 - t, 3 - i);
+}
+
+// Calcola la derivata del polinomio di Bernstein
+float Bernstein3Derivative(int i, float t) {
+	switch(i) {
+		case 0:
+			return -3 * pow(1 - t, 2);
+		case 1:
+			return 3 * (pow(1 - t, 2) - 2 * t * (1 - t));
+		case 2:
+			return 3 * (-pow(t, 2) + 2 * t * (1 - t));
+		case 3:
+			return 3 * pow(t, 2);
+		default:
+			return 0.0;
+	}
+}
+
+void main() {
+	/* 
+		Calcoliamo l'orientamento della patch, che ci servirà per verificare che
+		le normali calcolate tramite le derivate parziali siano orientate nel verso
+		giusto
+	*/
+	//vec3 v1 = gl_in[3].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+	//vec3 v2 = gl_in[15].gl_Position.xyz - gl_in[3].gl_Position.xyz;
+	//vec3 faceNormal = normalize(cross(v1, v2));
+	
+	vec3 normal = vec3(0.0);
+	vec3 position = vec3(0.0);
+
+	
+	/* Coordinate fornite dal Tessellator */
+	float u = gl_TessCoord.x;
+	float v = gl_TessCoord.y;
+	
+	/*
+		Calcoliamo la posizione del punto sulla patch
+	*/
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 4; j++) {
+			vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+			position += Pij * Bernstein3(j, u) * Bernstein3(i, v);	
+		}
+	}
+	
+	/*
+		Calcoliamo le normali
+	*/
+	
+	if(in_InterpolatedNormals) { // Normali interpolate 
+
+		vec3 n0 = tesNormal[0];
+		vec3 n1 = tesNormal[1];
+		vec3 n2 = tesNormal[2];
+		vec3 n3 = tesNormal[3];	
+	
+		normal = normalize((n0 * (1 - u) + n1 * u) * (1 - v)  + (n2 * u + n3 * (1 - u)) * v);
+	} else { // Normali tramite prodotto vettoriale
+	
+		vec3 tu = vec3(0.0);
+		vec3 tv = vec3(0.0);
+		
+		for(int i = 0; i < 4; i++) {
+			for(int j = 0; j < 4; j++) {
+				vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+				
+				tu += Pij * Bernstein3Derivative(j, u) * Bernstein3(i, v);	
+				tv += Pij * Bernstein3(j, u) * Bernstein3Derivative(i, v);				
+			}
+		}
+		
+		normal = normalize(cross(tu, tv));
+	}
+	
+
+	/*
+		Se la normale è orientata in verso opposto alla faccia, invertiamo
+		il verso
+	*/
+	
+	//if(dot(normal, faceNormal) < 0)
+	//	fsNormal = (in_ModelViewMatrix * vec4(-normal, 0.0)).xyz;
+	//else
+	gsNormal = (in_ModelViewMatrix * vec4(normal, 0.0)).xyz;
+
+
+	/*
+		Calcoliamo la posizione in NCS
+	*/
+	
+	gl_Position = in_ModelViewMatrix * vec4(position, 1.0);
+	
+}

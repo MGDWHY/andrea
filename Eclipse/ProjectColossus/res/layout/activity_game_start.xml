@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameStartActivity" >
+
+    <Button
+        android:id="@+id/cmdStartLocalGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Start Local Game" />
+
+    <EditText
+        android:id="@+id/txtServerIP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cmdStartLocalGame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="88dp"
+        android:ems="10"
+        android:text="192.168.1.4" />
+
+    <Button
+        android:id="@+id/cmdStartNetworkGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cmdStartLocalGame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:text="Start Network Game" />
+
+    <Button
+        android:id="@+id/cmdPreviewCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="22dp"
+        android:text="Preview Card" />
+
+</RelativeLayout>

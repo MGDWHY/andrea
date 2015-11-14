@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vecmath", "..\Libs\Vecmath\Vecmath.vcxproj", "{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLUtils", "..\OpenGLUtils\OpenGLUtils\OpenGLUtils.vcxproj", "{8EADFE38-7900-4509-ABFA-6B6F315955BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Window", "..\Libs\Window\Window.vcxproj", "{3281AB5A-2261-440F-BAC7-667873B99329}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wavefront", "..\Libs\Wavefront\Wavefront.vcxproj", "{4B5BF452-EB69-4DE8-8960-6D0CE9C7330B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TessellationShader6", "TessellationShader6\TessellationShader6.vcxproj", "{B872DDAC-C629-4A63-9CCE-F6EF07CAE375}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Debug|Win32.Build.0 = Debug|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Release|Win32.ActiveCfg = Release|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Release|Win32.Build.0 = Release|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Debug|Win32.Build.0 = Debug|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Release|Win32.ActiveCfg = Release|Win32
+		{8EADFE38-7900-4509-ABFA-6B6F315955BF}.Release|Win32.Build.0 = Release|Win32
+		{3281AB5A-2261-440F-BAC7-667873B99329}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3281AB5A-2261-440F-BAC7-667873B99329}.Debug|Win32.Build.0 = Debug|Win32
+		{3281AB5A-2261-440F-BAC7-667873B99329}.Release|Win32.ActiveCfg = Release|Win32
+		{3281AB5A-2261-440F-BAC7-667873B99329}.Release|Win32.Build.0 = Release|Win32
+		{4B5BF452-EB69-4DE8-8960-6D0CE9C7330B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B5BF452-EB69-4DE8-8960-6D0CE9C7330B}.Debug|Win32.Build.0 = Debug|Win32
+		{4B5BF452-EB69-4DE8-8960-6D0CE9C7330B}.Release|Win32.ActiveCfg = Release|Win32
+		{4B5BF452-EB69-4DE8-8960-6D0CE9C7330B}.Release|Win32.Build.0 = Release|Win32
+		{B872DDAC-C629-4A63-9CCE-F6EF07CAE375}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B872DDAC-C629-4A63-9CCE-F6EF07CAE375}.Debug|Win32.Build.0 = Debug|Win32
+		{B872DDAC-C629-4A63-9CCE-F6EF07CAE375}.Release|Win32.ActiveCfg = Release|Win32
+		{B872DDAC-C629-4A63-9CCE-F6EF07CAE375}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

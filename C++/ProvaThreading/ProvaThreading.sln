@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProvaThreading", "ProvaThreading\ProvaThreading.vcxproj", "{5B6F629C-72B6-4E1C-83AA-1325E295DBDC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vecmath", "..\Libs\Vecmath\Vecmath.vcxproj", "{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B6F629C-72B6-4E1C-83AA-1325E295DBDC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5B6F629C-72B6-4E1C-83AA-1325E295DBDC}.Debug|Win32.Build.0 = Debug|Win32
+		{5B6F629C-72B6-4E1C-83AA-1325E295DBDC}.Release|Win32.ActiveCfg = Release|Win32
+		{5B6F629C-72B6-4E1C-83AA-1325E295DBDC}.Release|Win32.Build.0 = Release|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Debug|Win32.Build.0 = Debug|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Release|Win32.ActiveCfg = Release|Win32
+		{8DCC43A4-B0B3-441C-BD78-D5867A9A0BDA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

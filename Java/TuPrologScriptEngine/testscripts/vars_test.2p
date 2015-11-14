@@ -1,0 +1,6 @@
+figlio(massimo, maria).
+figlio(anna, piera).
+figlio(andrea, anna).
+figlio(andrea, massimo).
+
+

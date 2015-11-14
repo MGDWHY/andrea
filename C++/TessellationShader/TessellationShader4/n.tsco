@@ -1,0 +1,24 @@
+#version 420
+
+layout(vertices = 3) out;
+
+uniform float in_TessLevel;
+uniform mat4 in_ModelViewMatrix;
+
+flat in vec3 vsNormal[];
+
+out vec3 tcsNormal[3];
+
+void main() {
+	
+	gl_out[gl_InvocationID].gl_Position = in_ModelViewMatrix * gl_in[gl_InvocationID].gl_Position;
+	
+	tcsNormal[gl_InvocationID] = (in_ModelViewMatrix * vec4(vsNormal[gl_InvocationID], 0.0)).xyz;
+	
+	gl_TessLevelOuter[0] = in_TessLevel;
+	gl_TessLevelOuter[1] = in_TessLevel;
+	gl_TessLevelOuter[2] = in_TessLevel;
+	gl_TessLevelOuter[3] = in_TessLevel;
+	gl_TessLevelInner[0] = in_TessLevel;
+	gl_TessLevelInner[1] = in_TessLevel;	
+}

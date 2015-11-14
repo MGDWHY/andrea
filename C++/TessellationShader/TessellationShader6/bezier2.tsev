@@ -1,0 +1,102 @@
+// bezier.tsev
+#version 420
+
+// Matrici
+uniform mat4 in_ModelViewMatrix;
+uniform mat4 in_ProjectionMatrix;
+
+// Output della normale per fragment shader
+smooth out vec3 fsNormal;
+
+patch in vec3 tesNormal[4];
+
+// Dice al Tessellator di generare le coordinate u e v in [0, 1] 
+layout(quads, fractional_odd_spacing, ccw) in;
+
+// Coefficienti per i polinomi di Bernstein di grado 3
+const float coefficients[] = {
+	1, 3, 3, 1
+};
+
+// Calcola il polinomio di Bernstein
+float Bernstein3(int i, float t) {
+	return coefficients[i] * pow(t, i) * pow(1 - t, 3 - i);
+}
+
+// Calcola la derivata del polinomio di Bernstein
+float Bernstein3Derivative(int i, float t) {
+	switch(i) {
+		case 0:
+			return -3 * pow(1 - t, 2);
+		case 1:
+			return 3 * (pow(1 - t, 2) - 2 * t * (1 - t));
+		case 2:
+			return 3 * (-pow(t, 2) + 2 * t * (1 - t));
+		case 3:
+			return 3 * pow(t, 2);
+		default:
+			return 0.0;
+	}
+}
+
+vec3 GetNormal(float u, float v) {
+
+	vec3 tu = vec3(0.0);
+	vec3 tv = vec3(0.0);
+	
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 4; j++) {
+			vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+			
+			tv += Pij * Bernstein3(i, u) * Bernstein3Derivative(j, v);
+			tu += Pij * Bernstein3Derivative(i, u) * Bernstein3(j, v);	
+		}
+	}
+	
+	return normalize(cross(tu, tv));
+}
+
+void main() {
+	
+	vec3 position = vec3(0.0);
+
+	
+	/* Coordinate fornite dal Tessellator */
+	float u = gl_TessCoord.x;
+	float v = gl_TessCoord.y;
+	
+	/*
+		Calcoliamo la posizione del punto sulla patch
+	*/
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 4; j++) {
+			vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+			position += Pij * Bernstein3(j, u) * Bernstein3(i, v);		
+		}
+	}
+	
+	/*
+		Calcoliamo le derivate parziali (ossia i due vettori tangenti)
+	*/
+		
+	
+	/*
+		Calcoliamo la normale tramite prodotto vettoriale dei due
+		vettori tangenti
+	*/
+	vec3 n0 = tesNormal[0];
+	vec3 n1 = tesNormal[1];
+	vec3 n2 = tesNormal[2];
+	vec3 n3 = tesNormal[3];
+	
+	vec3 normal = normalize((n0 * (1 - u) + n1 * u) * (1 - v)  + (n2 * u + n3 * (1 - u)) * v);
+	
+	fsNormal = (in_ModelViewMatrix * vec4(normal, 0.0)).xyz;
+
+	/*
+		Calcoliamo la posizione in NCS
+	*/
+	
+	gl_Position = in_ProjectionMatrix * in_ModelViewMatrix * vec4(position, 1.0);
+	
+}

@@ -1,0 +1,49 @@
+// bezier.tsco
+#version 420
+
+/* Le patch in output avranno 16 punti di controllo */
+layout(vertices = 16) out;
+
+/* 
+	Questa variabile ci serve per variare la tassellazione durante l'esecuzione
+	del programma
+*/
+uniform float in_TessLevel;
+
+in vec3 tcsNormal[];
+
+patch out vec3 tesNormal[4];
+
+void main() {	
+	/*
+		I valori gl_TessLevelOuter e gl_TessLevelInner sono variabili
+		predefinite da OpenGL per specificare il livello di tassellazione
+		richiesto ai lati (outer) e internamente (inner) alla patch.
+		Può essere utile avere valori diversi se si vuole implementare una
+		tassellazione adattiva (per esempio in base alla distanza dal
+		punto di osservazione).
+		
+		Il livello di tassellazione è un valore float compreso tra in [1, 64],
+		che specifica quanto devono essere "fitte" le coordinate generate.
+		
+		Nel nostro caso applichiamo una tassellazione uniforme su tutta la
+		patch.
+	*/
+	gl_TessLevelOuter[0] = in_TessLevel;
+	gl_TessLevelOuter[1] = in_TessLevel;
+	gl_TessLevelOuter[2] = in_TessLevel;
+	gl_TessLevelOuter[3] = in_TessLevel;
+	gl_TessLevelInner[0] = in_TessLevel;
+	gl_TessLevelInner[1] = in_TessLevel;
+	
+	tesNormal[0] = tcsNormal[0];
+	tesNormal[1] = tcsNormal[3];
+	tesNormal[2] = tcsNormal[15];
+	tesNormal[3] = tcsNormal[12];
+
+	gl_out[gl_InvocationID].gl_Position = gl_in[gl_InvocationID].gl_Position;	
+
+
+
+		
+}

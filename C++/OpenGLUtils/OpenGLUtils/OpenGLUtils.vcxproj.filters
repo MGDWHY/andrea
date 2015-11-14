@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="tgaload">
+      <UniqueIdentifier>{7ef758fa-8f39-4f67-8a0f-1ac90ee712cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="timer">
+      <UniqueIdentifier>{4eef6c1e-62e6-44ca-b710-37f2c6ae8b5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lodepng">
+      <UniqueIdentifier>{4d9821f3-f7a2-4379-9c44-ba1c7c08d526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader">
+      <UniqueIdentifier>{23f2e198-a630-4d07-819c-1fbc6dc79620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logger">
+      <UniqueIdentifier>{a5a9bb25-31a6-4636-886a-1c1923732519}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="objectfile">
+      <UniqueIdentifier>{57e7284c-96e5-4551-a82e-edbf954ad3eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="spline">
+      <UniqueIdentifier>{785cfebb-a4f0-4c71-8fd4-ad45b212705b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="matrixstack">
+      <UniqueIdentifier>{565bd4b8-6516-49ab-95c9-d8c07bae6cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framebufferobject">
+      <UniqueIdentifier>{1f770c8e-0ca0-4b90-acfd-731fcbe52429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vertexarrayobject">
+      <UniqueIdentifier>{60f304dc-dae6-41d3-a775-8d68a4653706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="raytracing">
+      <UniqueIdentifier>{9ff35173-8a12-4b4f-b8cd-2b96a55aec1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interpolation">
+      <UniqueIdentifier>{dce815bb-4513-441e-9e4c-550f570b4bf8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tgaload.h">
+      <Filter>tgaload</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h" />
+    <ClInclude Include="lodepng.h">
+      <Filter>lodepng</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderManager.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>timer</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameBufferObject.h">
+      <Filter>framebufferobject</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectFile.h">
+      <Filter>objectfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Face.h">
+      <Filter>objectfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Bspline.h">
+      <Filter>spline</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialLibrary.h">
+      <Filter>objectfile</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>objectfile</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixStack.h">
+      <Filter>matrixstack</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexArrayObject.h">
+      <Filter>vertexarrayobject</Filter>
+    </ClInclude>
+    <ClInclude Include="raytracing.h">
+      <Filter>raytracing</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearInterpolator.h">
+      <Filter>interpolation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tgaload.cpp">
+      <Filter>tgaload</Filter>
+    </ClCompile>
+    <ClCompile Include="lodepng.cpp">
+      <Filter>lodepng</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderManager.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>timer</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameBufferObject.cpp">
+      <Filter>framebufferobject</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectFile.cpp">
+      <Filter>objectfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Face.cpp">
+      <Filter>objectfile</Filter>
+    </ClCompile>
+    <ClCompile Include="Bspline.cpp">
+      <Filter>spline</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>objectfile</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialLibrary.cpp">
+      <Filter>objectfile</Filter>
+    </ClCompile>
+    <ClCompile Include="MatrixStack.cpp">
+      <Filter>matrixstack</Filter>
+    </ClCompile>
+    <ClCompile Include="raytracing.cpp">
+      <Filter>raytracing</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexArrayObject.cpp">
+      <Filter>vertexarrayobject</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearInterpolator.cpp">
+      <Filter>interpolation</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Darts</string>
+    <string name="title_activity_test1">Test1</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_test2">Test2</string>
+    <string name="title_activity_test3">3D Test</string>
+    
+    <string name="gameui_2d_vs">
+        uniform mat4 in_ProjectionMatrix;
+        
+        attribute vec2 in_Position;
+        attribute vec2 in_TexCoord;
+        
+        varying vec2 fs_TexCoord;
+        
+        void main() {
+        	gl_Position = in_ProjectionMatrix * vec4(in_Position, vec2(0, 1));
+        	fs_TexCoord = in_TexCoord;
+        }
+    </string>
+    
+    <string name="gameui_2dtexture_fs">
+        uniform sampler2D in_Texture;
+        
+        varying vec2 fs_TexCoord;
+        
+        void main() {
+        	gl_FragColor = texture2D(in_Texture, fs_TexCoord);
+        }
+    </string> 
+
+    <string name="gameui_2dcolor_fs">
+        uniform vec4 in_Color;
+        
+        varying vec2 fs_TexCoord;
+        
+        void main() {
+        	gl_FragColor = in_Color;
+        }
+    </string>     
+    
+    <string name="gameui_2dhgradient_fs">
+        uniform vec4 in_Color1;
+        uniform vec4 in_Color2;
+        
+		varying vec2 fs_TexCoord;
+		
+		void main() {
+			gl_FragColor = mix(in_Color1, in_Color2, fs_TexCoord.x);
+		}
+		
+    </string>
+    
+    <string name="axes_vs">
+        uniform mat4 in_MVP;
+        
+        attribute vec3 in_Position;
+        
+        void main() {
+        	gl_Position = in_MVP * vec4(in_Position, 1.0);
+        }
+        
+    </string>
+    
+    <string name="axes_fs">
+        uniform vec4 in_Color;
+        
+        void main() {
+        	gl_FragColor = in_Color;
+        }
+        
+    </string>
+    
+    <string name="g3d_phong_vs">
+		uniform mat4 in_MVPMatrix;
+        
+        attribute vec3 in_Position;
+        attribute vec3 in_Normal;
+        attribute vec2 in_TexCoord;
+        
+        varying vec3 fs_Normal;
+        varying vec2 fs_TexCoord;
+        
+        void main() {
+        	gl_Position = in_MVPMatrix * vec4(in_Position, 1.0);
+        	fs_Normal = (in_MVPMatrix * vec4(in_Normal, 0.0)).xyz;
+        	fs_TexCoord = in_TexCoord;
+        }
+    </string>
+    
+    <string name="g3d_phong_color_fs">
+        uniform float in_Shininess;
+        uniform float in_Specularity;
+        uniform vec4 in_Color;
+        
+        varying vec3 fs_Normal;
+        varying vec2 fs_TexCoord;        
+        
+        void main() {
+        	gl_FragColor = in_Color;
+        }
+        
+    </string>
+    
+</resources>

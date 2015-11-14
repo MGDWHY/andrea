@@ -1,0 +1,39 @@
+
+cons([X|XT], X).
+
+max(A, B, A) :- A >= B.
+max(A, B, B).
+
+length1([], 0).
+length1([X|XT], N) :- length1(XT, N1), N is N1 + 1.
+
+biggest([X], X) :- !.
+biggest([X1,X2], B) :- max(X1, X2, B), !.
+biggest([X1|XT], B) :- biggest(XT, B1), max(X1, B1, B).
+
+swap_head([X1,X2|XT], [X2,X1|XT]).
+
+ordered([X]). 
+ordered([X1,X2|XT]) :- X1 >= X2, ordered([X2|XT]).
+
+append1([], Y, Y).
+append1([X1|XT], Y, [X1|R]) :- append1(XT, Y, R).
+
+sift([], [], _).
+sift([X|XT], [X|R], N) :- X >= N, !, sift(XT, R, N).
+sift([X|XT], R, N) :- sift(XT, R, N).
+
+deleteAll([],_,[]).
+deleteAll([E|XT], E, R) :- deleteAll(XT, E, R).
+deleteAll([X|XT], E, [X|R]) :- deleteAll(XT, E, R).
+
+deleteFirst([E|XT], E, XT).
+deleteFirst([X|XT], E, [X|R]) :- deleteFirst(XT, E, R).
+
+replaceAll([], _, _, []).
+replaceAll([E|XT], E, N, [N|R]) :- replaceAll(XT, E, N, R).
+replaceAll([X|XT], E, N, [X|R]) :- replaceAll(XT, E, N, R).
+
+biggest2([X], X) :- !.
+biggest2([X|XT], X) :- biggest2(XT, R), X >= R, !.
+biggest2([X|XT], R) :- biggest2(XT, R).

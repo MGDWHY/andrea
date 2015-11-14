@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/layPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_alignParentTop="true" 
+        android:background="@color/bgcolor">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:id="@+id/txtResources"
+            android:text="txtResources"
+            android:textColor="@color/white">
+  
+        </TextView>
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layPlayerHand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true" 
+        android:background="@color/bgcolor">
+
+        <ImageView
+            android:id="@+id/cmdEndTurn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ui_end_turn_button" />
+        
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+ 
+	        <TextView
+	            android:id="@+id/txtNumCards"
+	            android:layout_width="wrap_content"
+	            android:layout_height="match_parent"
+	            android:gravity="center_vertical"
+	            android:text="#Cards" 
+	            android:textColor="@color/fgcolor"/>
+	
+	        <ImageView
+	            android:id="@+id/cmdShowHand"
+	            android:layout_width="32dp"
+	            android:layout_height="32dp"
+	            android:src="@drawable/ui_cards_button" />
+	          
+        </LinearLayout>
+        
+
+
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hsvCards"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layPlayerHand"
+        android:layout_alignParentLeft="true" >
+
+        <LinearLayout
+            android:id="@+id/layCards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+</RelativeLayout>

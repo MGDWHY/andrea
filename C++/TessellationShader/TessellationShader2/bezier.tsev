@@ -1,0 +1,32 @@
+// spline1.tsev
+// Valutazione di curve spline usando tessellation shader
+#version 420
+
+uniform mat4 in_ModelViewMatrix;
+uniform mat4 in_ProjectionMatrix;
+
+layout(quads, fractional_odd_spacing, ccw) in;
+
+const float coefficients[] = {
+	1, 3, 3, 1
+};
+
+float Bernstein3(int i, float t) {
+	return coefficients[i] * pow(t, i) * pow(1 - t, 3 - i);
+}
+
+void main() {
+	vec3 cps[16];
+	vec3 position = vec3(0.0);
+	float u = gl_TessCoord.x;
+	float v = gl_TessCoord.y;
+	
+	for(int i = 0; i < 4; i++)
+		for(int j = 0; j < 4; j++) {
+			vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+			position += Pij * Bernstein3(i, u) * Bernstein3(j, v);
+		}
+		
+	gl_Position = in_ProjectionMatrix * in_ModelViewMatrix * vec4(position, 1.0);
+	
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- COMMON CARDS -->
+    <array name="card_luckofthestars">
+        <item>@drawable/card_hunter_large</item>        
+        <item>Draw 2 cards.</item>
+    </array>
+    <array name="card_spacetunnel">
+        <item>@drawable/card_hunter_large</item>        
+        <item></item>
+    </array>
+    <array name="card_orbitaldefence">
+        <item>@drawable/card_hunter_large</item>        
+        <item></item>
+    </array>
+    <array name="card_planetaryexploitation">
+        <item>@drawable/card_hunter_large</item>        
+        <item>Get 2 additional resources for the current turn.</item>
+    </array>
+    <array name="card_defensivemaneuver">
+        <item>@drawable/card_hunter_large</item>        
+        <item></item>
+    </array>
+    <array name="card_offensivemaneuver">
+        <item>@drawable/card_hunter_large</item>        
+        <item></item>
+    </array>
+    <array name="card_fastretreat">
+        <item>@drawable/card_hunter_large</item>        
+        <item></item>
+    </array>
+    
+    <!-- HEIRS CARDS -->
+    <array name="card_hunter">
+        <item>@drawable/card_hunter_large</item>
+        <item>This single-seater ship makes up the majority of the Heirs fleet. Cheap and reliable, it represents an ideal choice for any commander.</item>
+    </array>
+    <array name="card_scout">
+        <item>@drawable/card_hunter_large</item>        
+        <item>The Scout is basically a modified Hunter for raids and short-range exploration activities.</item>
+    </array>
+    <array name="card_raider">
+        <item>@drawable/card_raider_large</item>        
+        <item>Designed for long-range attacks, they are fully automated, since no crew could ever withstand the acceleration caused by the Argo class engines.</item>
+   	</array>
+   	<array name="card_ghost">
+        <item>@drawable/card_hunter_large</item>   	    
+   	    <item></item>
+   	</array>
+   	<array name="card_mechasquad">
+        <item>@drawable/card_hunter_large</item>   	    
+   	    <item></item>
+   	</array>
+   	<array name="card_aegis">
+        <item>@drawable/card_hunter_large</item>   	    
+   	    <item>This flying fortress of the size of a small moon, represents the top of the Heirs technology. Equipped with thermonuclear weapons, it can easily destroy a planet or an entire enemy fleet. Its use in battle, however, has serious consequences that every commander must carefully evaluate. In fact, his weapons\' effects often bring down planets to big radioactive balls.&lt;br>&lt;br>&lt;b>Thermonuclear bombing&lt;/b> - When a planet is conquested by this ship, it will give no resources the next turn (stacks with similar effects).</item>
+   	</array>
+   	
+</resources>

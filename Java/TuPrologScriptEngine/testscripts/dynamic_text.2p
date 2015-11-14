@@ -1,0 +1,4 @@
+goal(X) :- java_object('java.lang.String', ['Ciao Mondo'], Prova),
+	Prova <- toString returns X.
+	
+	

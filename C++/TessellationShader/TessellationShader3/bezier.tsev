@@ -1,0 +1,77 @@
+// bezier.tsev
+#version 420
+
+uniform mat4 in_ModelViewMatrix;
+uniform mat4 in_ProjectionMatrix;
+
+smooth out vec3 fsNormal;
+
+layout(quads, fractional_odd_spacing, cw) in;
+
+const float coefficients[] = {
+	1, 3, 3, 1
+};
+
+float Bernstein3(int i, float t) {
+	return coefficients[i] * pow(t, i) * pow(1 - t, 3 - i);
+}
+
+float Bernstein3Derivative(int i, float t) {
+	switch(i) {
+		case 0:
+			return -3 * pow(1 - t, 2);
+		case 1:
+			return 3 * (pow(1 - t, 2) - 2 * t * (1 - t));
+		case 2:
+			return 3 * (-pow(t, 2) + 2 * t * (1 - t));
+		case 3:
+			return 3 * pow(t, 2);
+		default:
+			return 0.0;
+	}
+}
+
+float GetUV(float x) {
+	// return 1.0 / 3.0  + x * 1.0 / 3.0;
+	return x;
+}
+
+void main() {
+	vec3 v1 = gl_in[3].gl_Position.xyz - gl_in[0].gl_Position.xyz;
+	vec3 v2 = gl_in[15].gl_Position.xyz - gl_in[3].gl_Position.xyz;
+	vec3 faceNormal = normalize(cross(v1, v2));
+	
+	vec3 position = vec3(0.0);
+	vec3 tu = vec3(0.0);
+	vec3 tv = vec3(0.0);
+	
+	float u = GetUV(gl_TessCoord.x);
+	float v = GetUV(gl_TessCoord.y);
+	
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 4; j++) {
+			vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+			position += Pij * Bernstein3(i, u) * Bernstein3(j, v);		
+		}
+	}
+	
+	for(int i = 0; i < 4; i++) {
+		for(int j = 0; j < 4; j++) {
+			vec3 Pij = gl_in[i * 4 + j].gl_Position.xyz;
+			
+			tv += Pij * Bernstein3(i, u) * Bernstein3Derivative(j, v);
+			tu += Pij * Bernstein3Derivative(i, u) * Bernstein3(j, v);	
+		}
+	}	
+		
+	vec3 normal = normalize(cross(tu, tv));
+	
+	if(dot(normal, faceNormal) < 0)
+		fsNormal = (in_ProjectionMatrix * in_ModelViewMatrix * vec4(-normalize(-normal), 0.0)).xyz;
+	else
+		fsNormal = (in_ProjectionMatrix * in_ModelViewMatrix * vec4(-normalize(normal), 0.0)).xyz;
+
+	
+	gl_Position = in_ProjectionMatrix * in_ModelViewMatrix * vec4(position, 1.0);
+	
+}

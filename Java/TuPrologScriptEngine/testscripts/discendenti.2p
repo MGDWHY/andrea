@@ -1,0 +1,13 @@
+figlio(andrea, anna).
+figlio(andrea, massimo).
+
+figlio(lorenzo, massimo).
+
+figlio(massimo, carlo).
+figlio(massimo, maria).
+
+figlio(anna, piera).
+figlio(anna, fulvio).
+
+discendente(X, Y) :- figlio(X, Y).
+discendente(X, Y) :- figlio(X, Z), discendente(Z, Y).

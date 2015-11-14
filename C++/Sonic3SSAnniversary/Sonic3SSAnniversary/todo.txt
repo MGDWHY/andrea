@@ -1,0 +1,30 @@
+Logica/animazione
+
+	1) Tarare il salto (fatto)
+	2) Aggiungere le sfere gialle (fatto)
+	3) Implementare livelli random con algoritmo originale di Blue Spheres (fatto)
+	4) Implementare le scritte "Perfect" e "Get the blue spheres" (fatto)
+	5) Da rifinire la logica delle collisioni, che devono avvenire se si entra nel raggio di una sfera (non necessario per adesso)
+	6) Fare in modo che Sonic possa ruotare all'inizio del gioco (fatto)
+	7) Quando si trasforma un blocco di sfere blu in anelli, l'anello nella posizione corrente deve essere dato al giocatore (fatto)
+	8) Fixare lo stage 6 e 7 di Sonic&Knuckles (fatto)
+	9) Aggiungere gli special stage segreti di S3 e S&K (fatto)
+	10) Togliere le texture dagli stage segreti di S3 e S&K (fatto)
+	11) Aggiungere Avoid Search anche per le sezioni degli stage (fuck yeah!)
+
+Grafica
+	1) Sistemare la rotazione del cielo
+	2) Vedere se si puo fare qualcosa per quel glitch durante le rotazioni (NOTA: si verifica solo con la texture a scacchiera)
+		- dipende dalla velocità di rotazione (bha.)
+		- può darsi sia un bug grafico di OpenGL/Driver nvidia 
+	3) Sistemare texture uv dei bumper (fatto)
+	4) Togliere on/off per bloom lighting (sempre on) (fatto)
+	5) Rinominare il filtro bloom perchè adesso fa anche depth-of-field
+	6) Rifare il modello delle sfere (più poligoni) (fatto)
+	7) Aggiungere opzione per stereografica 3d (fatto)
+	8) Aggiungere menu per modalità di gioco Blue Spheres (fatto)
+	9) Aggiungere la possibilità di impostare il filtro anisotropico (per ora è impostato a x8) (fatto)
+
+Suono
+	1) Tarare il loop della musica (fatto)
+	2) Rifare il suono del perfect
