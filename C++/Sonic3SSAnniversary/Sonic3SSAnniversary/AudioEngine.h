@@ -1,11 +1,10 @@
 #pragma once
 
 #include "Logger.h"
-#include "bass/bass.h"
-// #include "bass/bass_fx.h"
-#include "gl\glew.h"
+#include <bass/bass.h>
+#include <bass/bass_fx.h>
+#include <gl\glew.h>
 #include "Global.h"
-
 
 
 

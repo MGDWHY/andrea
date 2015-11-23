@@ -325,7 +325,6 @@ public:
 
 int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {
 
-
 	#ifdef CONVERT_MODELS
 		Global::ConvertModels();
 	#endif
@@ -339,18 +338,17 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,LPSTR lpCmdLin
 	viewHeight = gameConfig.displayMode.height;
 
 	GLWindow::Initialize(hInstance, gameConfig);
-	GLWindow::AddWindowListener(new MainWindowListener());
 
 	Global::CheckGLVersion();
-
-	ShowWindow(GLWindow::hWnd, SW_SHOW);
-	SetForegroundWindow(GLWindow::hWnd);
-	SetFocus(GLWindow::hWnd);
 
 	glewInit();
 	InitGL();
 	InitThreading();
 
+	GLWindow::AddWindowListener(new MainWindowListener());
+	ShowWindow(GLWindow::hWnd, SW_SHOW);
+	SetForegroundWindow(GLWindow::hWnd);
+	SetFocus(GLWindow::hWnd);
 
 	MSG msg;
 

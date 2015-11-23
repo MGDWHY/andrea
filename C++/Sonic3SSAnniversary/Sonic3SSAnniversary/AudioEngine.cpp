@@ -31,8 +31,8 @@ AudioEngine::AudioEngine(void)
 	this->titleScreen = BASS_StreamCreateFile(FALSE, "sound/s&k.mp3", 0, 0, 0);
 	this->stageClear = BASS_StreamCreateFile(FALSE, "sound/stageClear.wav", 0, 0, BASS_STREAM_DECODE);
 
-	//this->music = BASS_FX_TempoCreate(this->music, BASS_FX_FREESOURCE);
-	//this->stageClear = BASS_FX_TempoCreate(this->stageClear, BASS_FX_FREESOURCE);
+	this->music = BASS_FX_TempoCreate(this->music, BASS_FX_FREESOURCE);
+	this->stageClear = BASS_FX_TempoCreate(this->stageClear, BASS_FX_FREESOURCE);
 
 	BASS_ChannelSetSync(this->music, BASS_SYNC_END, 0, AudioEngine::SyncProc, (void*) &(AudioEngine::SYNC_MUSIC));
 	BASS_ChannelSetSync(this->stageClear, BASS_SYNC_END, 0, AudioEngine::SyncProc, (void*) &(AudioEngine::SYNC_STAGE_CLEAR));
@@ -85,7 +85,7 @@ void AudioEngine::RestartMusic() { BASS_ChannelPlay(this->music, TRUE); }
 
 void AudioEngine::SetMusicTempo(GLfloat tempo) {
 	this->musicTempo = tempo;
-	//BASS_ChannelSetAttribute(this->music, BASS_ATTRIB_TEMPO, tempo);
+	BASS_ChannelSetAttribute(this->music, BASS_ATTRIB_TEMPO, tempo);
 }
 
 GLfloat AudioEngine::GetMusicTempo() {
