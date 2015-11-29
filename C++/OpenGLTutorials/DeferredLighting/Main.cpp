@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <gl/glew.h>
+#include <gl/glut.h>
 #include "vecmath.h"
 #include "lodepng.h"
 #include "MatrixStack.h"
@@ -294,8 +296,8 @@ void InitGL() {
 	texNormalMat = pngTexture("textures/normal2.png");
 
 	ShaderManager *manager = ShaderManager::getDefaultManager();
-	store = manager->createShader("C:/Andrea/GLSL/def_lighting/def_lighting.vert", "C:/Andrea/GLSL/def_lighting/def_lighting.frag");
-	render = manager->createShader("C:/Andrea/GLSL/def_lighting/render.vert", "C:/Andrea/GLSL/def_lighting/render.frag");
+	store = manager->createShader("D:/Andrea/GLSL/def_lighting/def_lighting.vert", "D:/Andrea/GLSL/def_lighting/def_lighting.frag");
+	render = manager->createShader("D:/Andrea/GLSL/def_lighting/render.vert", "D:/Andrea/GLSL/def_lighting/render.frag");
 
 	screen = new VertexArrayObject(1, GL_STATIC_DRAW);
 	screen->setElementsData(sizeof(GLuint), 6, screenIndices);

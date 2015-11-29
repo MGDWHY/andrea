@@ -1,6 +1,8 @@
 #include <Windows.h>
 #include <iostream>
 #include <cstdlib>
+#include <gl/glew.h>
+#include <gl/glut.h>
 #include "vecmath.h"
 #include "ShaderManager.h"
 #include "Timer.h"
@@ -16,6 +18,7 @@
 #define RND(x) (float) rand() / RAND_MAX * x
 
 using namespace std;
+using namespace Vecmath;
 using namespace glutils;
 
 struct Particle {
@@ -362,14 +365,22 @@ void DrawInfo() {
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(10, glutGet(GLUT_WINDOW_HEIGHT) - 80, 0);
+	glTranslatef(10, glutGet(GLUT_WINDOW_HEIGHT) - 60, 0);
+	glScalef(0.1, 0.1, 0.1);
+	sprintf(buffer, "Press Mouse LEFT/RIGHT to attract/repulse particles");
+	DrawString(buffer);
+	glPopMatrix();
+
+
+	glPushMatrix();
+	glTranslatef(10, 40, 0);
 	glScalef(0.1, 0.1, 0.1);
 	sprintf(buffer, "Particles [10-200K]: %d", renderedParticles);
 	DrawString(buffer);
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(10, glutGet(GLUT_WINDOW_HEIGHT) - 100, 0);
+	glTranslatef(10, 20, 0);
 	glScalef(0.1, 0.1, 0.1);
 	sprintf(buffer, "Particle size [5-30]: %.2f", particleSize);
 	DrawString(buffer);
