@@ -52,6 +52,7 @@ GLuint texStar;
 vec2 actionTarget, wcsToPixel;
 
 int action = ACTION_NONE;
+bool displayHelp = true;
 
 int renderedParticles = NUM_PARTICLES / 4;
 GLfloat particleSize = 5.0f;
@@ -115,7 +116,7 @@ int main(int argc, char **argv) {
 	glutMouseFunc(Mouse);
 	glutMotionFunc(MouseMotion);
 
-	//glutFullScreen();
+	glutFullScreen();
 
 	glutMainLoop();
 	return 0;
@@ -156,7 +157,8 @@ void Render() {
 	DrawParticles();
 
 	// draw info
-	DrawInfo();
+	if(displayHelp)
+		DrawInfo();
 
 	glutSwapBuffers();
 }
@@ -316,6 +318,11 @@ void Keyboard(unsigned char key, int x, int y) {
 			if(particleSize > 2.5f)
 				particleSize -= 2.5f;
 			break;
+		case 'h':
+			displayHelp = !displayHelp;
+			break;
+		case VK_ESCAPE:
+			exit(0);
 	}
 }
 

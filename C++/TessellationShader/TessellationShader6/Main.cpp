@@ -16,7 +16,7 @@
 
 #define GL_ERROR_CHECK { int x = glGetError(); if(x != GL_NO_ERROR) std::cout << "GL Error: " << x << std::endl; }
 #define PI 3.141592f
-#define MESH "a.obj"
+#define MESH "pawn.obj"
 
 struct Vertex {
 	vec3 Position;
@@ -141,7 +141,7 @@ template<class T> bool Contains(vector<T>& v, T& element) {
 	glutCreateWindow("Tessellation Shader #3");
 	// Finestra creata... Adesso dovrebbe andare, ma
 
-
+	
 	glewInit();
 	
 	InitGL();
@@ -155,6 +155,8 @@ template<class T> bool Contains(vector<T>& v, T& element) {
 	glutKeyboardFunc(Keyboard);
 	glutMotionFunc(MouseMotion);
 	glutMouseFunc(Mouse);
+
+	glutFullScreen();
 
 	glutMainLoop();
 
@@ -654,6 +656,10 @@ void Keyboard(unsigned char key, int x, int y) {
 			glPolygonMode(GL_FRONT, GL_FILL);
 		else
 			glPolygonMode(GL_FRONT, GL_LINE);
+		break;
+	case VK_ESCAPE:
+		exit(0);
+		break;
 	}
 
 	if(gTessLevel < 1.0f)
